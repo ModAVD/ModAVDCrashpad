@@ -25,8 +25,7 @@ namespace crashpad {
 
 bool GetModuleVersionAndType(const base::FilePath& path,
                              VS_FIXEDFILEINFO* vs_fixedfileinfo) {
-  // TODO(b/410075886): Solve unresolved symbols linking error and uncomment this.
-  /*DWORD size = GetFileVersionInfoSize(path.value().c_str(), nullptr);
+  DWORD size = GetFileVersionInfoSize(path.value().c_str(), nullptr);
   if (!size) {
     PLOG_IF(WARNING, GetLastError() != ERROR_RESOURCE_TYPE_NOT_FOUND)
         << "GetFileVersionInfoSize: " << base::WideToUTF8(path.value());
@@ -54,7 +53,6 @@ bool GetModuleVersionAndType(const base::FilePath& path,
 
   *vs_fixedfileinfo = *fixed_file_info;
   vs_fixedfileinfo->dwFileFlags &= vs_fixedfileinfo->dwFileFlagsMask;
-*/
   return true;
 }
 
